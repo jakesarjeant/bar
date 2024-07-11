@@ -68,7 +68,7 @@ export class Opt<T = unknown> extends Variable<T> {
 		console.log("initialized", id, "as", this.value);
 
 		config.connect("changed", config => {
-			this.value = config.get(id) || this.value;
+			this.value = config.get(id) || this.initial;
 		});
 	}
 
