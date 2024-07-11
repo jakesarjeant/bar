@@ -27,11 +27,19 @@
 				...
 			}: let
 				nixpkgs' = nixpkgs.legacyPackages."${system}";
-				ags = nixpkgs'.callPackage ./ags {inherit inputs;};
+				ags = nixpkgs'.callPackage ./config {inherit inputs;};
 			in {
 				packages = {
 					inherit ags;
 					default = ags;
+				};
+				devShells.default = pkgs.mkShell {
+					buildInputs = [inputs.ags.packages.${system}.default];
+
+					shellHook = ''
+						ags --init --config ./config/main.js
+						rm ./config/main.js
+					'';
 				};
 			};
 		};

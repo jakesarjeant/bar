@@ -2,41 +2,55 @@
 	cage,
 	stdenv,
 	esbuild,
+	dart-sass,
+	which,
 	inputs,
 	accountsservice,
 	writeShellScript,
+	fd,
 	system
 }:
 let
-	name = "shell";
+	name = "jdesk";
 
 	ags = inputs.ags.packages.${system}.default.override {
 		extraPackages = [accountsservice];
 	};
 
-	dependencies = [];
+	dependencies = [
+		which
+		dart-sass
+		fd
+	];
 
 	addBins = list:
 		builtins.concatStringsSep ":" (builtins.map (p: "${p}/bin") list);
 
 	desktop = writeShellScript name ''
 		export PATH=$PATH:${addBins dependencies};
-		${cage}/bin/cage -b ${name} -c ${config}/main.js $@
+		${ags}/bin/ags -b ${name} -c ${config}/config.js $@
 	'';
 
 	greeter = writeShellScript "greeter" ''
-		export PATH=$PATH:${addBins dependencies};
+		export PATH=$PATH:${addBins dependencies}
 		${cage}/bin/cage -ds -m last ${ags}/bin/ags -- -c ${config}/greeter.js
 	'';
 
 	config = stdenv.mkDerivation {
 		inherit name;
 		src = ./.;
+
+		buildInputs = [which];
 		
+		configurePhase = ''
+			${ags}/bin/ags --init --config ./main.js
+			rm main.js
+		'';
+
 		buildPhase = ''
 			${esbuild}/bin/esbuild \
-				--bundle ./main.ts \
-				--outfile=main.js \
+				--bundle ./desktop/main.ts \
+				--outfile=config.js \
 				--format=esm \
 				--external:resource://\* \
 				--external:gi://\* \
@@ -51,12 +65,13 @@ let
 
     installPhase = ''
       mkdir -p $out
-      cp -r assets $out
-      cp -r style $out
-      cp -r greeter $out
-      cp -r widget $out
-      cp -f main.js $out/config.js
-      cp -f greeter.js $out/greeter.js
+			cp -r ./* $out
+      # cp -r assets $out
+      # cp -r style $out
+      # cp -r greeter $out
+      # cp -r widget $out
+      # cp -f main.js $out/config.js
+      # cp -f greeter.js $out/greeter.js
     '';
 	};
 in
