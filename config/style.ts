@@ -50,3 +50,5 @@ async function resetCss() {
 }
 
 await resetCss();
+
+opts.config.connect("changed", () => resetCss());
