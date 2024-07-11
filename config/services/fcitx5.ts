@@ -37,7 +37,7 @@ export const im = Variable("", {
 				null
 			).get_child_value(0).recursiveUnpack();
 
-			return available.find(x => x[0] === current)![4].slice(0, 2);
+			return ((available.find(x => x[0] === current) || [, , , ""])[4] || "").slice(0, 2);
 		}
 	]
 });
