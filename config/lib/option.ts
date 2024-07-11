@@ -16,11 +16,14 @@ class Config extends Service {
 		Utils.monitorFile(file, () => {
 			this.load();
 			this.emit("changed");
-		})
+		});
+
+		console.log(`monitoring config ${file}`)
 	}
 
 	load() {
 		this.content = JSON.parse(Utils.readFile(this.file) || "{}");
+		console.log(`loaded ${this.file}:`, this.content);
 	}
 
 	get(id: string): any {
