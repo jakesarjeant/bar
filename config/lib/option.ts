@@ -64,11 +64,11 @@ export class Opt<T = unknown> extends Variable<T> {
 
 	init(config: Config, id: string) {
 		this.id = id;
-		this.value = config.get(id) || this.value;
+		this.value = config.get(id) ?? this.value;
 		console.log("initialized", id, "as", this.value);
 
 		config.connect("changed", config => {
-			this.value = config.get(id) || this.initial;
+			this.value = config.get(id) ?? this.initial;
 		});
 	}
 
