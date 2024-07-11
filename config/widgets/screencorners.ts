@@ -5,7 +5,7 @@ export default (monitor: number) => Widget.Window({
 	name: `corner${monitor}`,
 	class_name: "screen-corner",
 	anchor: ["top", "bottom", "left", "right"],
-	click_through: true,
+	clickThrough: true,
 	child: Widget.Box({
 		class_name: "shadow",
 		child: Widget.Box({
