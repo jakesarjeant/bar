@@ -41,7 +41,7 @@ const CPUIndicator = () => Widget.CircularProgress({
 		min-width: 16px;
 		min-height: 16px;
 	`,
-	value: 1.0, //cpu.bind(),
+	value: cpu.bind(),
 	startAt: 0.4,
 	endAt: 0.1,
 	rounded: true,
@@ -63,7 +63,7 @@ const MemoryIndicator = () => Widget.CircularProgress({
 		min-width: 16px;
 		min-height: 16px;
 	`,
-	value: 1, //ram.bind(),
+	value: ram.bind(),
 	startAt: 0.4,
 	endAt: 0.1,
 	rounded: true,
