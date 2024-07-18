@@ -8,7 +8,7 @@ export default () => Widget.Button({
 	//}),
 	child: Widget.Label({
 		label: " ",
-		css: opts.font.size.bind().as(f => `font-size: ${parseInt(f) * 1.2}px`),
+		css: opts.font.size.bind().as(f => `font-size: ${f * 1.2}px`),
 		halign: Gtk.Align.CENTER,
 		marginStart: 3,
 	})

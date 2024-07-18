@@ -41,7 +41,7 @@ const CPUIndicator = () => Widget.CircularProgress({
 		min-width: 16px;
 		min-height: 16px;
 	`,
-	value: cpu.bind(),
+	value: 1.0, //cpu.bind(),
 	startAt: 0.4,
 	endAt: 0.1,
 	rounded: true,
@@ -50,10 +50,10 @@ const CPUIndicator = () => Widget.CircularProgress({
 	//	icon: "computer-symbolic"
 	//})
 	child: Widget.Label({
-		label: "C",
-		css: opts.font.size.bind().as(f => `font-size: ${f}`),
-		marginStart: 1,
-		marginTop: 2,
+		label: " ",
+		css: opts.font.size.bind().as(f => `font-size: ${f - 2}px`),
+		marginStart: 2,
+		marginTop: 0,
 	})
 });
 
@@ -63,15 +63,15 @@ const MemoryIndicator = () => Widget.CircularProgress({
 		min-width: 16px;
 		min-height: 16px;
 	`,
-	value: ram.bind(),
+	value: 1, //ram.bind(),
 	startAt: 0.4,
 	endAt: 0.1,
 	rounded: true,
 	child: Widget.Label({
-		label: "M",
-		css: opts.font.size.bind().as(f => `font-size: ${f}`),
+		label: " ",
+		css: opts.font.size.bind().as(f => `font-size: ${f - 5}px`),
 		marginStart: 1,
-		marginTop: 2,
+		marginTop: 0,
 	})
 });
 

@@ -5,7 +5,7 @@ import { BarWidget } from "widgets/bar";
 export const opts = mkOptions(opt_file, {
 	font: {
 		family: opt("JetBrainsMono Nerd Font"),
-		size: opt("11px"),
+		size: opt(11),
 	},
 	space: opt(4),
 	radius: opt(8),
