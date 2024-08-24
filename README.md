@@ -1,5 +1,7 @@
 # My AGS Bar
 
+https://github.com/user-attachments/assets/725d609f-776a-4601-bef6-e07b1b201348
+
 Per popular demand (i.e. one person on reddit), this is my (incredibly messy) bar that I made with AGS. You can either run it using the provided nix flake, or try to figure out a way to build it yourself without nix – I've never tried, but it should be as simple as compiling the typescript source in `config/` the same way it's done in `config/default.nix` and putting the result in your `~/.config/ags`.
 
 A nerd font is required to display the system status widget.
