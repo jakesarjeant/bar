@@ -1,5 +1,5 @@
 {
-	description = "Jake's AGS Shell";
+	description = "Jake's Bar";
 
   inputs.nixvim.url = "github:nix-community/nixvim";
   inputs.nixpkgs.url = "github:nixos/nixpkgs";

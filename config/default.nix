@@ -11,7 +11,7 @@
 	system
 }:
 let
-	name = "jdesk";
+	name = "jbar";
 
 	ags = inputs.ags.packages.${system}.default.override {
 		extraPackages = [accountsservice];
