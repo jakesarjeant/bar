@@ -2,6 +2,7 @@ import opts from "options";
 import LauncherBar from "widgets/bar/launcher";
 import Workspaces from "widgets/bar/workspaces";
 import Date from "widgets/bar/date";
+import HanDate from "widgets/bar/handate";
 import Time from "widgets/bar/time";
 import SysTray from "widgets/bar/systray";
 import System from "widgets/bar/system";
@@ -15,6 +16,7 @@ const widgets = {
 	launcher: LauncherBar,
 	workspaces: Workspaces,
 	date: Date,
+	handate: HanDate,
 	time: Time,
 	systray: SysTray,
 	system: System,

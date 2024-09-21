@@ -45,6 +45,10 @@ $widgetsize: 24px;
     background: $bar-bg;
     color: $bar-fg;
   }
+
+  .hd-faint {
+    opacity: 0.5;
+  }
 }
 
 window.screen-corner:not(.hidden) {
